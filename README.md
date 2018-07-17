@@ -11,4 +11,4 @@ Once the script has completed running, you will find two .csv files in the worki
 1. mean_std_measurements.csv - compilation of the testing and training data along with activity name
                                and subject id appended to each observation. Only mean and std 
                                measurements for each observation are displayed.
-2. subject_activity_means - calculates mean of all measurements grouped by subject id and activity name
+2. subject_activity_means.txt - calculates mean of all measurements grouped by subject id and activity name

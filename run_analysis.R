@@ -16,10 +16,10 @@ activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")
 
 # Rename columns
 names(xtrain) <- features[,2]
-names(ytrain) <- "activityId"
+names(ytrain) <- "activity"
 names(subjecttrain) <- "subjectNum"
 names(xtest) <- features[,2]
-names(ytest) <- "activityId"
+names(ytest) <- "activity"
 names(subjecttest) <- "subjectNum"
 names(activity_labels) <- c("activityId", "activityName")
 
@@ -37,14 +37,14 @@ test <- cbind(subjecttest["subjectNum"], ytest, xtest)
 allData <- rbind(train, test)
 
 # Convert activity numbers into activity names
-allData$activityId <- factor(allData[,"activityId"], levels = activity_labels[["activityId"]], labels = activity_labels[["activityName"]])
+allData$activity <- factor(allData[,"activity"], levels = activity_labels[["activityId"]], labels = activity_labels[["activityName"]])
 
 # Write results to a csv file
 write.csv(allData, "mean_std_measurements.csv")
 
 # Calculates mean of all measurements grouped by subject and activity
-allDataMelt <- melt(allData, id=c("subjectNum", "activityId"))
-allDataSujbectActivity <- dcast(allDataMelt, subjectNum + activityId ~ variable, mean)
+allDataMelt <- melt(allData, id=c("subjectNum", "activity"))
+allDataSujbectActivity <- dcast(allDataMelt, subjectNum + activity ~ variable, mean)
 
 # Write results to a csv file
-write.csv(allDataSujbectActivity, "subject_activity_means.csv")
+write.table(allDataSujbectActivity, "subject_activity_means.txt", row.name=FALSE)
