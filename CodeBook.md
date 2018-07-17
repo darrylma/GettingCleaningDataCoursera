@@ -48,3 +48,14 @@ The following transformations were performed on the provided dataset with the ob
 3. Uses descriptive activity names to name the activities in the data set
 4. Appropriately labels the data set with descriptive variable names.
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+## Result
+
+The following two files were created as part of the analysis:
+
+1. mean_std_measurements.csv - compilation of the testing and training data along with activity name
+                               and subject id appended to each observation. Only mean and std 
+                               measurements for each observation are displayed.
+2. subject_activity_means.txt - calculates mean of all measurements grouped by subject id and activity name
+
+
