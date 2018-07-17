@@ -36,15 +36,15 @@ test <- cbind(subjecttest["subjectNum"], ytest, xtest)
 # Concatenate training and testing data frames
 allData <- rbind(train, test)
 
-# Convert activity numbers into activity names
+# Convert activity ids into activity names
 allData$activity <- factor(allData[,"activity"], levels = activity_labels[["activityId"]], labels = activity_labels[["activityName"]])
 
 # Write results to a csv file
 write.csv(allData, "mean_std_measurements.csv")
 
-# Calculates mean of all measurements grouped by subject and activity
+# Calculate means of all measurements grouped by subject and activity
 allDataMelt <- melt(allData, id=c("subjectNum", "activity"))
 allDataSujbectActivity <- dcast(allDataMelt, subjectNum + activity ~ variable, mean)
 
-# Write results to a csv file
+# Write results to a txt file
 write.table(allDataSujbectActivity, "subject_activity_means.txt", row.name=FALSE)
